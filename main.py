@@ -36,14 +36,21 @@ def main():
         screen.fill("black")
         for game_shape in drawable:
             game_shape.draw(screen)
+
         for game_shape in updatable:
             game_shape.update(dt)
+
         for asteroid in asteroids:
             if asteroid.collision(player) == True:
                 print("Game over!")
                 return
+            # shot v. single asteroid
+            for shot in shots:
+                if shot.collision(asteroid) == True:
+                    shot.kill()
+                    asteroid.kill()
+        
         pygame.display.flip()
-
         dt = clock.tick(60) / 1000
 
 if __name__ == "__main__":
