@@ -28,7 +28,7 @@ class Player(CircleShape):
         self.rotation += PLAYER_TURN_SPEED * dt
     
     def update(self, dt):
-        print(self.cooldown)
+
         if self.cooldown > 0:
             self.cooldown -= dt
         
